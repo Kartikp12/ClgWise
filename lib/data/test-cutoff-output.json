@@ -1,0 +1,123 @@
+{
+  "source": "Maharashtra CET Cell",
+  "academicYear": "2026-27",
+  "admissionRound": "CAP Round I",
+  "collegeCode": "01002",
+  "collegeName": "Government College of Engineering, Amravati",
+  "courseCode": "0100219110",
+  "branch": "Civil Engineering",
+  "status": "Government Autonomous",
+  "homeUniversity": "Autonomous Institute",
+  "cutoffRecords": [
+    {
+      "category": "GOPENS",
+      "meritNumber": 34692,
+      "percentile": 91.7858261
+    },
+    {
+      "category": "GSCS",
+      "meritNumber": 59898,
+      "percentile": 85.6921506
+    },
+    {
+      "category": "GSTS",
+      "meritNumber": 83081,
+      "percentile": 79.9864621
+    },
+    {
+      "category": "GVJS",
+      "meritNumber": 42419,
+      "percentile": 89.9742931
+    },
+    {
+      "category": "GNT1S",
+      "meritNumber": 37979,
+      "percentile": 90.9657321
+    },
+    {
+      "category": "GNT2S",
+      "meritNumber": 49413,
+      "percentile": 88.245893
+    },
+    {
+      "category": "GNT3S",
+      "meritNumber": 38815,
+      "percentile": 90.8146472
+    },
+    {
+      "category": "GOBCS",
+      "meritNumber": 39541,
+      "percentile": 90.5704062
+    },
+    {
+      "category": "GSEBCS",
+      "meritNumber": 43228,
+      "percentile": 89.6830085
+    },
+    {
+      "category": "LOPENS",
+      "meritNumber": 29259,
+      "percentile": 93.0716724
+    },
+    {
+      "category": "LSCS",
+      "meritNumber": 48878,
+      "percentile": 88.2977496
+    },
+    {
+      "category": "LSTS",
+      "meritNumber": 78065,
+      "percentile": 81.2365306
+    },
+    {
+      "category": "LOBCS",
+      "meritNumber": 31224,
+      "percentile": 92.5914149
+    },
+    {
+      "category": "LSEBCS",
+      "meritNumber": 43376,
+      "percentile": 89.6590708
+    },
+    {
+      "category": "PWDOPENS",
+      "meritNumber": 56918,
+      "percentile": 86.3943435
+    },
+    {
+      "category": "PWDOBCS",
+      "meritNumber": 197479,
+      "percentile": 37.1379111
+    },
+    {
+      "category": "DEFOPENS",
+      "meritNumber": 81290,
+      "percentile": 80.4716144
+    },
+    {
+      "category": "DEFOBCS",
+      "meritNumber": 192421,
+      "percentile": 40.4162412
+    },
+    {
+      "category": "TFWS",
+      "meritNumber": 24536,
+      "percentile": 94.2142883
+    },
+    {
+      "category": "PWDRSTS",
+      "meritNumber": 156087,
+      "percentile": 57.4188806
+    },
+    {
+      "category": "DEFRSCS",
+      "meritNumber": 183913,
+      "percentile": 44.6246246
+    },
+    {
+      "category": "EWS",
+      "meritNumber": 65351,
+      "percentile": 84.3786315
+    }
+  ]
+}
