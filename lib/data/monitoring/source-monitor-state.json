@@ -50,8 +50,8 @@
       "lastCheckedAt": "2026-11-24T00:05:01.955Z",
       "lastSuccessfulCheckAt": "2026-11-24T00:05:01.955Z",
       "lastChangedAt": "2026-11-23T09:18:20.222Z",
-      "lastHttpStatus": 304,
-      "lastStatus": "not_modified",
+      "lastHttpStatus": 200,
+      "lastStatus": "unchanged",
       "changeCount": 0,
       "consecutiveFailures": 0,
       "lastError": null
