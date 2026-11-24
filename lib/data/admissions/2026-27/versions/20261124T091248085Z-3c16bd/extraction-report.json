@@ -1,0 +1,143 @@
+{
+  "pipeline": "ClgWise Automated Extraction Pipeline",
+  "academicYear": "2026-27",
+  "status": "validated",
+  "startedAt": "2026-11-24T09:12:40.300Z",
+  "completedAt": "2026-11-24T09:12:48.084Z",
+  "durationSeconds": 7.78,
+  "completedSteps": [
+    "Institute extraction",
+    "Cutoff PDF extraction",
+    "Dataset validation",
+    "Master dataset generation",
+    "Master dataset integrity validation"
+  ],
+  "validation": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "Institute dataset structure",
+        "passed": true,
+        "details": "Found 387 institutes"
+      },
+      {
+        "name": "Cutoff dataset structure",
+        "passed": true,
+        "details": "Found 372 cutoff colleges"
+      },
+      {
+        "name": "Institute academic year",
+        "passed": true,
+        "details": "2026-27"
+      },
+      {
+        "name": "Cutoff academic year",
+        "passed": true,
+        "details": "2026-27"
+      },
+      {
+        "name": "Institute extraction status",
+        "passed": true,
+        "details": "verified"
+      },
+      {
+        "name": "Expected institute count",
+        "passed": true,
+        "details": "387/387"
+      },
+      {
+        "name": "Institute codes valid and unique",
+        "passed": true,
+        "details": "387 unique codes, 0 invalid codes, 0 duplicates"
+      },
+      {
+        "name": "Cutoff college codes valid and unique",
+        "passed": true,
+        "details": "372 unique codes, 0 invalid codes, 0 duplicates"
+      },
+      {
+        "name": "No unmatched cutoff colleges",
+        "passed": true,
+        "details": "0 unmatched colleges; maximum allowed 0"
+      },
+      {
+        "name": "Course structure",
+        "passed": true,
+        "details": "2031 courses, 0 structurally invalid"
+      },
+      {
+        "name": "Duplicate course codes",
+        "passed": true,
+        "details": "0 duplicates; maximum allowed 0"
+      },
+      {
+        "name": "Cutoff record validation",
+        "passed": true,
+        "details": "15609 records, 0 invalid"
+      },
+      {
+        "name": "PDF pages processed without failures",
+        "passed": true,
+        "details": "0 failed pages; maximum allowed 0"
+      },
+      {
+        "name": "Known parsing error threshold",
+        "passed": true,
+        "details": "204 errors; maximum 204"
+      },
+      {
+        "name": "No parser-reported duplicate courses",
+        "passed": true,
+        "details": "0 parser-reported duplicates; maximum allowed 0"
+      },
+      {
+        "name": "PDF page processing completed",
+        "passed": true,
+        "details": "1580/1580 pages"
+      }
+    ],
+    "summary": {
+      "academicYear": "2026-27",
+      "institutes": 387,
+      "cutoffColleges": 372,
+      "courses": 2031,
+      "cutoffRecords": 15609,
+      "pagesProcessed": 1580,
+      "pagesFailed": 0,
+      "parsingErrors": 204,
+      "parserDuplicateCourses": 0,
+      "duplicateInstituteCodes": 0,
+      "duplicateCutoffCodes": 0,
+      "unmatchedCutoffColleges": 0,
+      "invalidCourses": 0,
+      "duplicateCourseCodes": 0,
+      "invalidCutoffRecords": 0
+    }
+  },
+  "masterValidation": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "Master academic year",
+        "passed": true,
+        "details": "2026-27"
+      },
+      {
+        "name": "Master institute count",
+        "passed": true,
+        "details": "387/387"
+      },
+      {
+        "name": "Master unmatched cutoff colleges",
+        "passed": true,
+        "details": 0
+      }
+    ]
+  },
+  "publishedFiles": [
+    "institutes.json",
+    "cap-round-1.json",
+    "master-colleges.json",
+    "extraction-report.json"
+  ]
+}

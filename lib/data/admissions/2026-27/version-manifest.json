@@ -1,0 +1,38 @@
+{
+  "academicYear": "2026-27",
+  "activeVersion": "20261124T090117372Z-d29b17",
+  "versions": [
+    {
+      "versionId": "20261124T090117372Z-d29b17",
+      "createdAt": "2026-11-24T09:01:17.394Z",
+      "files": [
+        "institutes.json",
+        "cap-round-1.json",
+        "master-colleges.json",
+        "extraction-report.json"
+      ],
+      "checksums": {
+        "institutes.json": "faf9338d4bd3d5a2759876d12554db108e0d1c1f38a4936e7dd1bfdd0866b4a7",
+        "cap-round-1.json": "4e59b5ccc2fed492119679dcdd839e30c73be661d2c71b2317c78903716a94e5",
+        "master-colleges.json": "0e6047ef2b3cbff9bbe3c92d6847432dbaa43a473caadee0b53f9551bcd63c49",
+        "extraction-report.json": "a8c1b771593bf0c1d56c9491750dd8053285c3e2a7f9758453a79cc72fe809ee"
+      }
+    },
+    {
+      "versionId": "20261124T091248085Z-3c16bd",
+      "createdAt": "2026-11-24T09:12:48.097Z",
+      "files": [
+        "institutes.json",
+        "cap-round-1.json",
+        "master-colleges.json",
+        "extraction-report.json"
+      ],
+      "checksums": {
+        "institutes.json": "2daf5ca5bd83210cc1e114c1c94b4860b199f98d34229e6c4ba84d293677dda6",
+        "cap-round-1.json": "1ec01766a16c85f9d22210e3cff76d122c4f159f1de2f8332279f32132267082",
+        "master-colleges.json": "39bdd8b47ed7e1e27a3103a223b50cd50aacca15109d5e3bd11e4392556f3e6a",
+        "extraction-report.json": "e9bef7ec7ab04bd8909f141d6d7fb396fe341ca1e09ab8ff13e229ceaefe2d83"
+      }
+    }
+  ]
+}

@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "eslint",
     "monitor:sources": "node lib/monitoring/monitorSources.js",
-    "extract:admissions": "node lib/scrapers/runExtractionPipeline.js"
+    "extract:admissions": "node lib/scrapers/runExtractionPipeline.js",
+    "init:admissions-versions": "node lib/scrapers/initializeAdmissionsVersions.js",
+    "rollback:admissions": "node lib/scrapers/rollbackAdmissionsVersion.js"
 
   },
   "dependencies": {

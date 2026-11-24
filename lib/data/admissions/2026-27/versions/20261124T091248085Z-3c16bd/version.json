@@ -1,0 +1,17 @@
+{
+  "versionId": "20261124T091248085Z-3c16bd",
+  "academicYear": "2026-27",
+  "createdAt": "2026-11-24T09:12:48.097Z",
+  "files": [
+    "institutes.json",
+    "cap-round-1.json",
+    "master-colleges.json",
+    "extraction-report.json"
+  ],
+  "checksums": {
+    "institutes.json": "2daf5ca5bd83210cc1e114c1c94b4860b199f98d34229e6c4ba84d293677dda6",
+    "cap-round-1.json": "1ec01766a16c85f9d22210e3cff76d122c4f159f1de2f8332279f32132267082",
+    "master-colleges.json": "39bdd8b47ed7e1e27a3103a223b50cd50aacca15109d5e3bd11e4392556f3e6a",
+    "extraction-report.json": "e9bef7ec7ab04bd8909f141d6d7fb396fe341ca1e09ab8ff13e229ceaefe2d83"
+  }
+}
