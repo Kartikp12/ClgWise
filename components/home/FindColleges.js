@@ -8,6 +8,7 @@ import {
   MapPin,
   Sparkles,
 } from "lucide-react";
+import CollegeResults from "./CollegeResults";
 
 const initialProfile = {
   isResultDeclared: true,
@@ -429,6 +430,7 @@ export default function FindColleges() {
             </p>
           </div>
         </form>
+        <CollegeResults result={result} />
       </div>
     </section>
   );
