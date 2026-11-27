@@ -41,6 +41,7 @@ function IntelligenceVisual() {
           animate={{ pathLength: 1, opacity: 1 }}
           transition={{ duration: 2, ease: "easeInOut" }}
         />
+
         <motion.circle
           cx="200"
           cy="155"
@@ -60,7 +61,10 @@ function IntelligenceVisual() {
           className="absolute h-2.5 w-2.5 rounded-full bg-[#7DA5FF] shadow-[0_0_18px_rgba(125,165,255,0.7)]"
           style={{ left: node.x, top: node.y }}
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: [0.45, 1, 0.45], scale: [0.8, 1.25, 0.8] }}
+          animate={{
+            opacity: [0.45, 1, 0.45],
+            scale: [0.8, 1.25, 0.8],
+          }}
           transition={{
             duration: 3,
             delay: node.delay,
@@ -76,7 +80,11 @@ function IntelligenceVisual() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
       >
-        <BrainCircuit size={43} className="text-[#D6F36A]" strokeWidth={1.5} />
+        <BrainCircuit
+          size={43}
+          className="text-[#D6F36A]"
+          strokeWidth={1.5}
+        />
         <span className="mt-3 text-xs font-bold tracking-widest text-white">
           CLGWISE AI
         </span>
@@ -126,7 +134,26 @@ function IntelligenceVisual() {
   );
 }
 
-export default function Hero() {
+export default function Hero({ stats }) {
+  const statistics = [
+    {
+      value: stats.totalInstitutes,
+      label: "Official Institutes",
+    },
+    {
+      value: stats.totalCourses,
+      label: "Courses Indexed",
+    },
+    {
+      value: stats.totalCutoffRecords,
+      label: "CAP Cutoff Records",
+    },
+    {
+      value: stats.institutesWithCutoffData,
+      label: "Institutes with Cutoff Data",
+  },
+  ];
+
   return (
     <section
       id="home"
@@ -135,6 +162,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.16] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:58px_58px]" />
 
       <div className="pointer-events-none absolute -left-40 top-20 -z-10 h-[420px] w-[420px] rounded-full bg-[#234d69]/20 blur-[120px]" />
+
       <div className="pointer-events-none absolute -right-40 bottom-0 -z-10 h-[420px] w-[420px] rounded-full bg-[#d6f36a]/[0.07] blur-[130px]" />
 
       <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
@@ -167,7 +195,7 @@ export default function Hero() {
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
               href="#find-colleges"
-              className="group inline-flex items-center justify-center gap-3 rounded-xl bg-[#4D8DFF] hover:bg-[#3678E8] px-6 py-4 text-sm font-bold text-[#101820] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E5FF8B]"
+              className="group inline-flex items-center justify-center gap-3 rounded-xl bg-[#4D8DFF] px-6 py-4 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#3678E8]"
             >
               Discover My Colleges
               <ArrowUpRight
@@ -185,21 +213,17 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="mt-12 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-white/10 pt-7">
-            <div>
-              <p className="text-2xl font-bold text-white">387</p>
-              <p className="mt-1 text-xs text-slate-500">Official Institutes</p>
-            </div>
-            <div className="h-9 w-px bg-white/10" />
-            <div>
-              <p className="text-2xl font-bold text-white">2,031</p>
-              <p className="mt-1 text-xs text-slate-500">Courses Indexed</p>
-            </div>
-            <div className="h-9 w-px bg-white/10" />
-            <div>
-              <p className="text-2xl font-bold text-white">15.6K</p>
-              <p className="mt-1 text-xs text-slate-500">CAP Cutoff Records</p>
-            </div>
+          <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-6 border-t border-white/10 pt-7 sm:grid-cols-4 sm:gap-x-4">
+            {statistics.map((statistic) => (
+              <div key={statistic.label}>
+                <p className="text-2xl font-bold text-white">
+                  {statistic.value.toLocaleString("en-IN")}
+                </p>
+                <p className="mt-1 text-xs leading-5 text-slate-500">
+                  {statistic.label}
+                </p>
+              </div>
+            ))}
           </div>
 
           <p className="mt-5 text-[10px] leading-5 text-slate-500">
@@ -217,7 +241,6 @@ export default function Hero() {
           <IntelligenceVisual />
         </motion.div>
       </div>
-
     </section>
   );
 }

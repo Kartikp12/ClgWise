@@ -2,8 +2,19 @@
 import Head from "next/head";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/home/Hero";
+import getAdmissionStats from "@/lib/data/admissions/getAdmissionStats";
 
-export default function Home() {
+export function getStaticProps() {
+  const datasetStats = getAdmissionStats();
+
+  return {
+    props: {
+      datasetStats,
+    },
+  };
+}
+
+export default function Home({ datasetStats }) {
   return (
     <>
       <Head>
@@ -16,7 +27,7 @@ export default function Home() {
 
       <main className="min-h-screen bg-[#101820]">
         <Navbar />
-        <Hero />
+        <Hero stats={datasetStats} />
       </main>
     </>
   );
