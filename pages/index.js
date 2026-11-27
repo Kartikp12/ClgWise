@@ -2,6 +2,7 @@
 import Head from "next/head";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/home/Hero";
+import FindColleges from "@/components/home/FindColleges";
 import getAdmissionStats from "@/lib/data/admissions/getAdmissionStats";
 
 export function getStaticProps() {
@@ -26,9 +27,10 @@ export default function Home({ datasetStats }) {
       </Head>
 
       <main className="min-h-screen bg-[#101820]">
-        <Navbar />
-        <Hero stats={datasetStats} />
-      </main>
+  <Navbar />
+  <Hero stats={datasetStats} />
+  <FindColleges />
+</main>
     </>
   );
 }
