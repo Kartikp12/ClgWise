@@ -23,60 +23,131 @@ const initialProfile = {
 export default function FindColleges() {
   const [profile, setProfile] = useState(initialProfile);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const updateProfile = (field, value) => {
     setProfile((current) => ({
       ...current,
       [field]: value,
     }));
-
+  
     setError("");
-    setSuccess(false);
+    setResult(null);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const percentile = Number(
-      profile.isResultDeclared
-        ? profile.percentile
-        : profile.expectedPercentile
-    );
-
+  
+    setError("");
+    setResult(null);
+  
+    const percentileValue = profile.isResultDeclared
+      ? profile.percentile
+      : profile.expectedPercentile;
+  
+    if (percentileValue === "") {
+      setError("Please enter your percentile.");
+      return;
+    }
+  
+    const percentile = Number(percentileValue);
+  
     if (
       !Number.isFinite(percentile) ||
       percentile < 0 ||
-      percentile > 100 ||
-      (profile.isResultDeclared
-        ? profile.percentile === ""
-        : profile.expectedPercentile === "")
+      percentile > 100
     ) {
       setError("Please enter a valid percentile between 0 and 100.");
       return;
     }
-
+  
     if (!profile.category.trim()) {
       setError("Please enter your category as mentioned in your CET application.");
       return;
     }
-
-    if (!profile.candidatureType.trim()) {
-      setError("Please enter your candidature type.");
-      return;
-    }
-
+  
     const branches = profile.preferredBranches
       .split(",")
       .map((branch) => branch.trim())
       .filter(Boolean);
-
+  
     if (branches.length === 0) {
       setError("Please enter at least one preferred engineering branch.");
       return;
     }
-
-    setSuccess(true);
+  
+    const studentProfile = {
+      examType: "MHT-CET",
+      isResultDeclared: profile.isResultDeclared,
+      ...(profile.isResultDeclared
+        ? { percentile }
+        : { expectedPercentile: percentile }),
+      category: profile.category.trim(),
+      preferredBranches: branches,
+    };
+  
+    if (profile.candidatureType.trim()) {
+      studentProfile.candidatureType =
+        profile.candidatureType.trim();
+    }
+  
+    if (profile.gender) {
+      studentProfile.gender = profile.gender;
+    }
+  
+    if (profile.homeUniversity.trim()) {
+      studentProfile.homeUniversity =
+        profile.homeUniversity.trim();
+    }
+  
+    setLoading(true);
+  
+    try {
+      const response = await fetch(
+        "/api/ai/personalized-suggestions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ studentProfile }),
+        }
+      );
+  
+      const data = await response.json();
+  
+      if (
+        response.status === 409 &&
+        data.status === "category_mapping_pending"
+      ) {
+        setResult({
+          status: "category_mapping_pending",
+          message:
+            data.message ||
+            "Official category mapping is pending. Verified college matching is not available yet.",
+        });
+        return;
+      }
+  
+      if (!response.ok) {
+        throw new Error(
+          data.errors?.join(" ") ||
+          data.error ||
+          data.message ||
+          "Unable to process your profile."
+        );
+      }
+  
+      setResult(data);
+    } catch (requestError) {
+      setError(
+        requestError.message ||
+        "Something went wrong. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputClass =
@@ -294,26 +365,63 @@ export default function FindColleges() {
               </p>
             )}
 
-            {success && (
-              <p
-                role="status"
-                className="rounded-xl border border-[#D6F36A]/20 bg-[#D6F36A]/10 px-4 py-3 text-sm leading-6 text-[#D6F36A]"
-              >
-                Your profile details are valid. College matching will be
-                connected in the next implementation step.
-              </p>
-            )}
+{result?.status === "category_mapping_pending" && (
+  <div
+    role="status"
+    className="rounded-xl border border-amber-400/20 bg-amber-400/10 px-4 py-4"
+  >
+    <h4 className="font-semibold text-amber-300">
+      College Matching Temporarily Pending
+    </h4>
+    <p className="mt-2 text-sm leading-6 text-slate-300">
+      {result.message}
+    </p>
+    <p className="mt-2 text-xs leading-5 text-slate-400">
+      Official category-to-cutoff mapping for the target
+      academic year is not verified yet. ClgWise will not
+      show unverified college recommendations.
+    </p>
+  </div>
+)}
 
-            <button
-              type="submit"
-              className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#4D8DFF] px-6 py-4 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#3678E8]"
-            >
-              Continue
-              <ArrowRight
-                size={18}
-                className="transition-transform group-hover:translate-x-1"
-              />
-            </button>
+{result?.status === "completed" && (
+  <div
+    role="status"
+    className="rounded-xl border border-[#D6F36A]/20 bg-[#D6F36A]/10 px-4 py-4"
+  >
+    <h4 className="font-semibold text-[#D6F36A]">
+      Matching Results Received
+    </h4>
+    <p className="mt-2 text-sm text-slate-300">
+      {result.predictions?.length || 0} historical
+      college-course matches received.
+    </p>
+  </div>
+)}
+
+{result && result.status !== "completed" &&
+  result.status !== "category_mapping_pending" && (
+    <p
+      role="status"
+      className="rounded-xl border border-white/10 bg-[#101820] px-4 py-3 text-sm text-slate-300"
+    >
+      {result.message || "No verified matching results are available."}
+    </p>
+)}
+
+<button
+  type="submit"
+  disabled={loading}
+  className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#4D8DFF] px-6 py-4 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#3678E8] disabled:cursor-not-allowed disabled:opacity-60"
+>
+  {loading ? "Checking Your Profile..." : "Find My Colleges"}
+  {!loading && (
+    <ArrowRight
+      size={18}
+      className="transition-transform group-hover:translate-x-1"
+    />
+  )}
+</button>
 
             <p className="text-center text-xs leading-5 text-slate-500">
               Historical 2026–27 cutoff data is used for guidance only.
