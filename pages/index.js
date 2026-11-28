@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/home/Hero";
 import FindColleges from "@/components/home/FindColleges";
 import getAdmissionStats from "@/lib/data/admissions/getAdmissionStats";
+import CollegeComparison from "@/components/home/CollegeComparison";
 
 export function getStaticProps() {
   const datasetStats = getAdmissionStats();
@@ -30,6 +31,7 @@ export default function Home({ datasetStats }) {
   <Navbar />
   <Hero stats={datasetStats} />
   <FindColleges />
+  <CollegeComparison />
 </main>
     </>
   );

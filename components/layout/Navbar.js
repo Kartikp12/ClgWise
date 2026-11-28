@@ -13,7 +13,7 @@ const navigation = [
   { label: "Home", href: "#home" },
   { label: "Find Colleges", href: "#find-colleges" },
   { label: "Explore Colleges", href: "#explore-colleges" },
-  { label: "Compare", href: "#compare-colleges" },
+  { label: "Compare", href: "#college-comparison" },
   { label: "AI Guidance", href: "#ai-guidance" },
 ];
 
